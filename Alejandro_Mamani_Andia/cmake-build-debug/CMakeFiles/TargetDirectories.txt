@@ -1,0 +1,3 @@
+D:/CS/POO2/CLASES/22/05/2019/cmake-build-debug/CMakeFiles/2019.dir
+D:/CS/POO2/CLASES/22/05/2019/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/CS/POO2/CLASES/22/05/2019/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,186 @@
+// Class 22/05/2019//
+ Developed by Sthepanoff in 1940
+ STL STANDARD TEMPLATE LIBRARY
+ LIBRERIA GENERICA.
+ -Adaptable.
+ -Uso eficiente de recursos
+ -Separacion clara de los componentes
+ JAVA lo hace en tiempo de ejecucion a comparacion de C++ que lo hace en tiempo de
+ compilacion
+ STL
+ CONTENEDORES <--> ITERADORES <--> ALGORITMOS
+ CONTENEDOR ASOCIADO A UN ALGORITMO ESPECIFICO-
+ - RELACION 1:1
+ *Funcione(tipo de estructura llamable conoceidas como callables).
+  Callables:
+  -Objetos funciones
+  -Lambda
+  -Puntero a funcion
+  -Funciones
+
+ ---CONTENEDORES
+ Contenedores secuencialees
+ -vectores/arrays -- clases
+- listt(lista doble enlazada), forwward_list(lista enlazada simple)
+ lista puedo agregar en cualquier posicion
+ =deques(colas con doble salida)
+ permite agregar o remover en cualquier posicion conservando el orden de la estructura
+ Adaptadores
+ stack
+ queue
+ priotrity_queue
+ Contenedores asociados/
+ -
+ -
+ Vectores y arrays
+ Acceso aleatorio a los datos valor constante de acceso O(1)
+ Insercion y borrado al final valor constante O(1)
+ Insercion y borrado al comienzo o al interios valor lineal O(N)
+ Consumo de mayor memoria
+
+ Vector<int> v(100:
+ v[10] = 10;// no error
+ v.at(10);// error
+ Deques
+ Acceso aleatorio insercion y borrado de datos con valor constantes
+ en los extremos O(1)
+ Acceso aleatorio insercion y boraod de los datos con valor lineal en el peor de los casos  en el
+ interior O(n)
+ Consumo mayor de memoria
+
+
+ List: Doble enlace
+ Double list: en un solo sentido
+
+ Stacks. Clase template que envuelve a un conendeor de tipo deque por defecto
+
+
+stack<typename TypeValue, typename ContainerType>
+ContainerType se puede cambiar por listas, vectores, etc.
+LIFO( LAST TO INPUT FIRST TO OUTPUT)
+st.puch--st.pop--
+Queue
+FIFO First to input fist to output
+
+Pririty Queue
+Metodo de comparacion para mecanismo de prioridad
+
+
+
+//
+// Created by albin on 26/05/2019.
+//
+
+#ifndef INC_2019_UNIONFIND_H
+#define INC_2019_UNIONFIND_H
+
+// C++ implementation of disjoint set
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+class Unionfind {
+    int  *parent;
+    int n;
+
+public:
+    Unionfind(int n)
+    {
+        parent = new int[n];
+        this->n = n;
+        makeSet();
+    }
+    ~Unionfind()
+    {
+        delete []parent;
+    }
+    void makeSet()
+    {
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
+    }
+    int find(int x)
+    {
+        if ( x==parent[x]) {
+            return  x;
+        }
+        else return find(parent[x]);
+    }
+    void Union( int x , int y ){
+        int xRoot = find( x );
+        int yRoot = find( y );
+        parent[ xRoot ] = yRoot;
+    }
+};
+
+#endif //INC_2019_UNIONFIND_H
+
+
+class Unionfind {
+    stack<int> parent;
+    int n;
+
+public:
+    Unionfind(int n)
+    {
+        this->n = n;
+        makeSet();
+    }
+    void makeSet()
+    {
+        for (int i = 0; i < n; i++) {
+            parent.push(i);
+        }
+    }
+    int find(int x)
+    {
+        if ( x==parent.top()) {
+            return  x;
+        }
+        else return parent.top()= find(parent.top());
+    }
+    void Union( int x , int y ){
+        int xRoot = find( x );
+        int yRoot = find( y );
+        parent.top() = yRoot;
+    }
+};
+
+
+
+class Unionfind {
+    queue<int> parent;
+    int n;
+
+public:
+    Unionfind(int n)
+    {
+        this->n = n;
+        makeSet();
+    }
+    void makeSet()
+    {
+        for (int i = 0; i < n; i++) {
+            parent.push(i);
+        }
+    }
+    int find(int x)
+    {
+        if ( x==parent.front()) {
+            return  x;
+        }
+        else return parent.front()= find(parent.front());
+    }
+    void Union( int x , int y ){
+        int xRoot = find( x );
+        int yRoot = find( y );
+        parent.front() = yRoot;
+        parent.back()= xRoot;
+    }
+};
+
+
+
+
+
